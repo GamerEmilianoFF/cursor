@@ -1,0 +1,115 @@
+-- get good aim
+
+-- ez
+
+local IAPortable = Instance.new("ScreenGui")
+
+local Cursor = Instance.new("ImageLabel")
+
+local Hitmarker = Instance.new("ImageLabel")
+
+IAPortable.Name = "IA Portable"
+
+IAPortable.Parent = game:GetService('CoreGui')
+
+IAPortable.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Cursor.Name = "Cursor"
+
+Cursor.Parent = IAPortable
+
+Cursor.AnchorPoint = Vector2.new(0.5, 0.5)
+
+Cursor.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+
+Cursor.BackgroundTransparency = 9.000
+
+Cursor.Size = UDim2.new(0, 460, 0, 460)
+
+Cursor.Image = "rbxassetid://131718469"
+
+Cursor.ScaleType = Enum.ScaleType.Fit
+
+Hitmarker.Name = "Hitmarker"
+
+Hitmarker.AnchorPoint = Vector2.new(0.5, 0.5)
+
+Hitmarker.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+
+Hitmarker.BackgroundTransparency = 9.000
+
+Hitmarker.BorderColor3 = Color3.fromRGB(27, 42, 53)
+
+Hitmarker.Position = UDim2.new(0.5, 0, 0.5, 0)
+
+Hitmarker.Size = UDim2.new(0, 45, 0, 45)
+
+Hitmarker.Image = "rbxassetid://"
+
+local SoundService = game:GetService("SoundService")
+
+local ReplicatedStorage = game:GetService('ReplicatedStorage')
+
+local UserInputService = game:GetService('UserInputService')
+
+local RunService = game:GetService('RunService')
+
+local Players = game:GetService('Players')
+
+local Remotes = ReplicatedStorage:FindFirstChild('Remotes') or ReplicatedStorage
+
+local LocalPlayer = Players.LocalPlayer
+
+local Mouse = LocalPlayer:GetMouse()
+
+RunService.RenderStepped:Connect(function()
+
+    UserInputService.MouseIconEnabled = false
+
+    Cursor.Position = UDim2.new(0.490000000, 0,0.4700000000, 0)
+
+    
+
+    local Target = Mouse.Target
+
+    local Limb = Target.Parent:FindFirstChildOfClass('Humanoid')
+
+    local Accessory = Target.Parent.Parent:FindFirstChildOfClass('Humanoid')
+
+    
+
+    if Limb then
+
+        local Player = Players:GetPlayerFromCharacter(Target.Parent)
+
+        if Player.TeamColor == LocalPlayer.TeamColor then
+
+            Cursor.ImageColor3 = Color3.fromRGB(0,255,0)
+
+        else
+
+            Cursor.ImageColor3 = Color3.fromRGB(255,0,0)
+
+        end
+
+    elseif Accessory then
+
+        local Player = Players:GetPlayerFromCharacter(Target.Parent.Parent)
+
+        if Player.TeamColor == LocalPlayer.TeamColor then
+
+            Cursor.ImageColor3 = Color3.fromRGB(0,255,0)
+
+        else
+
+            Cursor.ImageColor3 = Color3.fromRGB(255,0,0)
+
+        end
+
+    else
+
+        Cursor.ImageColor3 = Color3.fromRGB(255,255,255)
+
+    end
+
+end)
