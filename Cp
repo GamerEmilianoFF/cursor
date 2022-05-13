@@ -26,7 +26,7 @@ Cursor.BackgroundTransparency = 9.000
 
 Cursor.Size = UDim2.new(0, 460, 0, 460)
 
-Cursor.Image = "rbxassetid://131718469"
+Cursor.Image = "rbxassetid://9389273219"
 
 Cursor.ScaleType = Enum.ScaleType.Fit
 
@@ -44,7 +44,7 @@ Hitmarker.Position = UDim2.new(0.5, 0, 0.5, 0)
 
 Hitmarker.Size = UDim2.new(0, 45, 0, 45)
 
-Hitmarker.Image = "rbxassetid://"
+Hitmarker.Image = "rbxassetid://9389273219"
 
 local SoundService = game:GetService("SoundService")
 
